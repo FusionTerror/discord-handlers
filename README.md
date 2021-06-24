@@ -23,6 +23,7 @@ module.exports = {
 ```
 #### The template below shows how a command file should look with 'client' already imported.
 ```js
+// Ping Command
 module.exports = {
 	name: 'ping',
 	async execute(message, args, client) {
