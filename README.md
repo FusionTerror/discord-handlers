@@ -1,4 +1,4 @@
-# Discord-Handler 📖
+# Discord-Handlers 📖
 ##### *Why spend time making a event or command handler? You got discord-handlers for Discord.JS v12!*
 ##### 💖 ~ Support: [Fusion Terror's YouTube](https://www.youtube.com/channel/UCjTvZBc6GFbYkVs9rGWJLbA), [Fusion Terror's Patreon](https://www.patreon.com/fusionterror)
 ##### 🙋‍♂ ~ Help: [Discord Server](https://discord.gg/QJyTkNxVrX)
@@ -6,12 +6,35 @@
 &nbsp;
 ## ✅ ~ Installation
 ```
-npm i discord-handler
+npm i discord-handlers
+```
+&nbsp;
+## 📌 ~ Command and Event files
+#### The template below shows how your event files should look with 'client' already imported.
+```js
+// Ready Event
+module.exports = {
+    name: 'ready',
+    once: true,
+    async execute(client) { // execute() is where you will pass in what you'd need for other events.
+        console.log(`${client.user.tag} has logged into Discord.`);
+    },
+};
+```
+#### The template below shows how a command file should look with 'client' already imported.
+```js
+module.exports = {
+	name: 'ping',
+	async execute(message, args, client) {
+		message.channel.send(`*Fetching...*`)
+            .then(sentMessage => sentMessage.edit(`**Pong:**\n> Bot: \`${sentMessage.createdTimestamp - message.createdTimestamp}ms\`\n> API: \`${client.ws.ping}ms\``));
+	},
+};
 ```
 &nbsp;
 ## 💡 ~ Example
 ```js
-const DiscordHandler = require('discord-handler'); //Requiring Discord-Handler module.
+const DiscordHandlers = require('discord-handler'); //Requiring Discord-Handlers module.
 const Discord = require('discord.js'); //Requiring Discord.js module.
 const fs = require('fs'); //Requiring fs module.
 const client = new Discord.Client(); //Creating and assigning the Discord.js Client constructor.
@@ -19,8 +42,8 @@ const client = new Discord.Client(); //Creating and assigning the Discord.js Cli
 const eventFiles = fs.readdirSync('path to event folder (e.g ./events)').filter(file => file.endsWith('.js')); //Getting an array of all the event files.
 const commandFolders = fs.readdirSync('path to command folders (e.g ./commands)'); //Getting all the folders insider of your events folder.
 
-DiscordHandler.events(eventFiles, 'path to event folder (e.g ./events)', client); //Running the event handler.
-DiscordHandler.commands(commandFolders, 'path to command folders (e.g ./commands)', client); //Running the command handler.
+DiscordHandlers.events(eventFiles, 'path to event folder (e.g ./events)', client); //Running the event handler.
+DiscordHandlers.commands(commandFolders, 'path to command folders (e.g ./commands)', client); //Running the command handler.
 
 client.login('BOT TOKEN HERE');
 ```
