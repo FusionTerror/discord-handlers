@@ -1,6 +1,6 @@
 {
   "name": "discord-handlers",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Why spend time making a event or command handler? You got discord-handlers for Discord.JS v12!",
   "engines": {
     "node": ">=7.8.0"
