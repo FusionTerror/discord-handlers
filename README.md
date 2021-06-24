@@ -41,7 +41,7 @@ module.exports = {
 	},
 };
 ```
-#### The template below shows how a command file should look with 'client' already imported. If you want to use an aliases, put "aliases" ['aliases name here']" under "name: 'command name'"
+#### The template below shows how a command file should look with 'client' already imported. If you want to use an aliases, put "aliases: ['aliases name here']" under "name: 'command name'"
 ```js
 // Ping Command
 module.exports = {
