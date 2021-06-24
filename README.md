@@ -55,7 +55,7 @@ module.exports = {
 &nbsp;
 ## 💡 ~ Example
 ```js
-const DiscordHandlers = require('discord-handler'); //Requiring Discord-Handlers module.
+const DiscordHandlers = require('discord-handlers'); //Requiring Discord-Handlers module.
 const Discord = require('discord.js'); //Requiring Discord.js module.
 const fs = require('fs'); //Requiring fs module.
 const client = new Discord.Client(); //Creating and assigning the Discord.js Client constructor.
