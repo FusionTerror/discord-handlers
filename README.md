@@ -21,7 +21,27 @@ module.exports = {
     },
 };
 ```
-#### The template below shows how a command file should look with 'client' already imported.
+```js
+// Message Event
+module.exports = {
+	name: 'message',
+	async execute(message, client) {
+        if (message.author.bot || !message.content.startsWith('!')) return; //! is the prefix in this case.
+        const args = message.content.slice(client.prefix.length).trim().split(/ +/);
+        const commandName = args.shift().toLowerCase();
+        const command = client.commands.get(commandName)
+            || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+
+        if (!command) return;
+        try {
+            command.execute(message, args, client);
+        } catch (error) {
+            console.log(error);
+        }
+	},
+};
+```
+#### The template below shows how a command file should look with 'client' already imported. If you want to use an aliases, put "aliases" ['aliases name here']" under "name: 'command name'"
 ```js
 // Ping Command
 module.exports = {
