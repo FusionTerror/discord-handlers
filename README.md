@@ -57,6 +57,7 @@ module.exports = {
 ```js
 const DiscordHandlers = require('discord-handlers'); //Requiring Discord-Handlers module.
 const Discord = require('discord.js'); //Requiring Discord.js module.
+const mongoose = require('mongoose'); //Requiring Mongoose module.
 const fs = require('fs'); //Requiring fs module.
 const client = new Discord.Client(); //Creating and assigning the Discord.js Client constructor.
 
@@ -66,7 +67,9 @@ const mongoEvents = fs.readdirSync('path to event folder (e.g ./events/mongo)').
 
 DiscordHandlers.commands(commandFolders, 'path to command folders (e.g ./commands)', client); //Running the command handler.
 DiscordHandlers.djsEvents(djsEvents, 'path to event folder (e.g ./events/djs)', client); //Running the event handler for Discord.js events.
-DiscordHandlers.mongoEvents(djsEvents, 'path to event folder (e.g ./events/mongo)', client, mongoose); //Running the event handler for mongoose connection events.
+
+// If using 'mongoEvents()' make sure you have mongoose installed and required in your file as 'mongoose'.
+DiscordHandlers.mongoEvents(mongoEvents, 'path to event folder (e.g ./events/mongo)', client, mongoose); //Running the event handler for mongoose connection events.
 
 client.login('BOT TOKEN HERE');
 ```
