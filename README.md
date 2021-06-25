@@ -60,11 +60,13 @@ const Discord = require('discord.js'); //Requiring Discord.js module.
 const fs = require('fs'); //Requiring fs module.
 const client = new Discord.Client(); //Creating and assigning the Discord.js Client constructor.
 
-const eventFiles = fs.readdirSync('path to event folder (e.g ./events)').filter(file => file.endsWith('.js')); //Getting an array of all the event files.
-const commandFolders = fs.readdirSync('path to command folders (e.g ./commands)'); //Getting all the folders insider of your events folder.
+const commandFolders = fs.readdirSync('path to command folders (e.g ./commands)'); //Getting all the folders inside of your commands folder.
+const djsEvents = fs.readdirSync('path to event folder (e.g ./events/djs)').filter(file => file.endsWith('.js')); //Getting an array of all djs events.
+const mongoEvents = fs.readdirSync('path to event folder (e.g ./events/mongo)').filter(file => file.endsWith('.js')); //Getting an array of all mongo events.
 
-DiscordHandlers.events(eventFiles, 'path to event folder (e.g ./events)', client); //Running the event handler.
 DiscordHandlers.commands(commandFolders, 'path to command folders (e.g ./commands)', client); //Running the command handler.
+DiscordHandlers.djsEvents(djsEvents, 'path to event folder (e.g ./events/djs)', client); //Running the event handler for Discord.js events.
+DiscordHandlers.mongoEvents(djsEvents, 'path to event folder (e.g ./events/mongo)', client, mongoose); //Running the event handler for mongoose connection events.
 
 client.login('BOT TOKEN HERE');
 ```

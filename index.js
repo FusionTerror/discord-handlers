@@ -2,13 +2,21 @@ const { Collection } = require('discord.js');
 const fs = require('fs');
 
 module.exports = {
-    events: async (eventFiles, path, client) => {
+    djsEvents: async (eventFiles, path, client) => {
         for (const file of eventFiles) {
             const event = require(`../../${path}/${file}`);
             console.log(`Event: ${event.name} | Loaded Successfully.`);
             if (event.once) client.once(event.name, (...args) => event.execute(...args, client));
             else client.on(event.name, (...args) => event.execute(...args, client));
         };
+    },
+
+    mongoEvents: async (eventFiles, path, client, mongoose) => {
+        for (const file of eventFiles) {
+            const event = require(`../../${path}/${file}`);
+            if (event.once) mongoose.connection.once(event.name, (...args) => event.execute(...args, client));
+            else mongoose.connection.on(event.name, (...args) => event.execute(...args, client));
+        }
     },
 
     commands: async (commandFolders, path, client) => {
