@@ -55,6 +55,15 @@ module.exports = {
 	},
 };
 ```
+```js
+// Mongoose Event
+module.exports = {
+	name: 'connected',
+	execute() {
+		console.log('Connected to the Database.');
+	},
+};
+```
 &nbsp;
 ## 📌 ~ Functions Files
 ### Handle Functions: `<discord-handlers>.functions(functionFiles, path, client)`

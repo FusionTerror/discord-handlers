@@ -35,7 +35,7 @@ module.exports = {
     functions: async (functionsFiles, path, client) => {
         for (const file of functionsFiles) {
             require(`../../${path}/${file}`)(client);
-            console.log(`Function: ${file.name} | Loaded Successfully.`);
+            console.log(`Function: ${file} | Loaded Successfully.`);
         }
     }
 };
