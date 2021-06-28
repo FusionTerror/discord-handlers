@@ -10,6 +10,9 @@ npm i discord-handlers
 ```
 &nbsp;
 ## 📌 ~ Command and Event files
+### Handle Commands: `<discord-handlers>.commands(commandFolders, path, client)`
+### Handle Discord Events: `<discord-handlers>.djsEvents(eventFiles, path, client)`
+### Handle Mongo Events: `<discord-handlers>.mongoEvents(eventFiles, path, client)`
 #### The template below shows how your event files should look with 'client' already imported.
 ```js
 // Ready Event
@@ -53,6 +56,16 @@ module.exports = {
 };
 ```
 &nbsp;
+## 📌 ~ Functions Files
+### Handle Functions: `<discord-handlers>.functions(functionFiles, path, client)`
+```js
+// Function File
+module.exports = (client) => {
+    client.functionName = async (functionParameter) => {
+        //Code here.
+    };
+};
+```
 ## 💡 ~ Example
 ```js
 const DiscordHandlers = require('discord-handlers'); //Requiring Discord-Handlers module.
@@ -64,9 +77,11 @@ const client = new Discord.Client(); //Creating and assigning the Discord.js Cli
 const commandFolders = fs.readdirSync('path to command folders (e.g ./commands)'); //Getting all the folders inside of your commands folder.
 const djsEvents = fs.readdirSync('path to event folder (e.g ./events/djs)').filter(file => file.endsWith('.js')); //Getting an array of all djs events.
 const mongoEvents = fs.readdirSync('path to event folder (e.g ./events/mongo)').filter(file => file.endsWith('.js')); //Getting an array of all mongo events.
+const functionFiles = fs.readdirSync('path to functions folder (e.g ./functions)').filter(file => file.endsWith('.js')); //Getting an array of all functions.
 
 DiscordHandlers.commands(commandFolders, 'path to command folders (e.g ./commands)', client); //Running the command handler.
 DiscordHandlers.djsEvents(djsEvents, 'path to event folder (e.g ./events/djs)', client); //Running the event handler for Discord.js events.
+DiscordHandlers.functions(functionFiles, 'path to function folder (e.g ./functions)', client); //Running the functions handler to pass in client.
 
 // If using 'mongoEvents()' make sure you have mongoose installed and required in your file as 'mongoose'.
 DiscordHandlers.mongoEvents(mongoEvents, 'path to event folder (e.g ./events/mongo)', client, mongoose); //Running the event handler for mongoose connection events.

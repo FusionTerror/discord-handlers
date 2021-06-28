@@ -30,5 +30,11 @@ module.exports = {
                 console.log(`Command: ${command.name} | Loaded Successfully.`);
             }
         }
+    },
+
+    functions: async (functionsFiles, path, client) => {
+        for (const file of functionsFiles) {
+            require(`../../${path}/${file}`)(client);
+        }
     }
 };
