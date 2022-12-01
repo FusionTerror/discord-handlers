@@ -1,0 +1,29 @@
+{
+  "name": "discord-handlers",
+  "version": "0.0.1",
+  "description": "A simple package to implement handlers for Discord.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FusionTerror/discord-handlers.git"
+  },
+  "keywords": [
+    "discord.js",
+    "discord"
+  ],
+  "author": "Fusion Terror",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/FusionTerror/discord-handlers/issues"
+  },
+  "homepage": "https://github.com/FusionTerror/discord-handlers#readme",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "discord.js": "^14.6.0",
+    "mongoose": "^6.7.3",
+    "path": "^0.12.7"
+  }
+}
