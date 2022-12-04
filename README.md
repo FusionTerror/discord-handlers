@@ -150,7 +150,7 @@ handler.handleMongoEvents("./src/events/mongo", client);
     .handleComponents("./src/components", client);
 })();
 
-// Discord.js Global Commands Handler: [Select either Gloal or Guild NOT both]
+// Discord.js Global Commands Handler: [Select either Global or Guild NOT both]
 // handler.handleGlobalCommands(
 //   "./src/commands",
 //   client,
@@ -158,7 +158,7 @@ handler.handleMongoEvents("./src/events/mongo", client);
 //   token
 // );
 
-// Discord.js Guild Commands Handler: [Select either Gloal or Guild NOT both]
+// Discord.js Guild Commands Handler: [Select either Global or Guild NOT both]
 handler.handleGuildCommands(
   "./src/commands",
   client,
